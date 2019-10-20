@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Selenium Training" verbose="1" parallel="tests"
+	thread-count="1" configfailurepolicy="continue">
+	<test name="@tc001" annotations="JDK" preserver-order="true">
+		<classes>
+			<class name="runner.CukesRunner" />
+		</classes>
+	</test>
+</suite>
