@@ -1,11 +1,13 @@
 package gluecode;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import cucumber.api.DataTable;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -19,7 +21,7 @@ public class StepDefs {
 	
 	@After
 	public void afterScenario(Scenario scenario) {
-		scenario.write(dataMap.get("URL"));
+//		scenario.write(dataMap.get("URL"));
 		driver.close();
 	}
 	
@@ -32,6 +34,22 @@ public class StepDefs {
         driver.manage().window().maximize();
 	}
 
+	
+	@When("^I enter username and password thru list:$")
+	public void i_enter_username_and_password_thru_list(DataTable credentials) throws Throwable {
+		List<List<String>> data = credentials.raw();
+		data.get(0).get(0);
+		data.get(0).get(1);
+		System.out.println("User Name::-->" + data.get(0).get(0));
+		System.out.println("Password::-->" + data.get(0).get(1));
+	}
+
+	@Then("^I enter username and password thru map:$")
+	public void i_enter_username_and_password_thru_map(Map<String, String> credentials) throws Throwable {
+		System.out.println("User Name::-->" + credentials.get("username"));
+		System.out.println("Password::-->" + credentials.get("password"));
+	}
+	
 	@Given("^some other precondition \"([^\"]*)\"$")
 	public void some_other_precondition(String TCID) throws Throwable {
 		dataMap = ReadExcel.getExcelData("./src/test/resources/data/DataProvider.xlsx", "TestData", TCID);
