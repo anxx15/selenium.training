@@ -3,6 +3,7 @@ New frame work with BDD and Cucumber Reporting
 TestNG runner
 Page Object model
 Excel for data input
+WinAppDriver for windows (10) OS based applications
 
 
 Steps to set up project
